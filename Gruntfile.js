@@ -6,7 +6,7 @@ module.exports=function (grunt) {
                 preserveLineBreaks: true
             },
             files:{
-                src:'./index.html',
+                src:'./dist/index.html',
                 dest:'dist/index.html'
             }
         },
@@ -24,12 +24,6 @@ module.exports=function (grunt) {
         uglify:{
             'dist/reg.min.js':['./reg.js']
         },
-        useminPrepare: {
-            html: 'index.html',
-            options: {
-              dest: 'dist'
-            }
-        },
         usemin: {
             html: ['dist/index.html']
         },
@@ -46,6 +40,5 @@ module.exports=function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-usemin');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.registerTask('release', ['copy', 'useminPrepare', 'uglify', 'usemin', 'cssmin', 'htmlmin']);
+    grunt.registerTask('release', ['copy', 'uglify', 'cssmin','usemin', 'htmlmin']);
 }
